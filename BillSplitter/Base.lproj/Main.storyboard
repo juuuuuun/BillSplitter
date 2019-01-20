@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,83 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWa-4C-z1V">
+                                <rect key="frame" x="37.5" y="40" width="300" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="hsg-ej-TpF"/>
+                                </connections>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="mpU-XL-OD4">
+                                <rect key="frame" x="35.5" y="90" width="304" height="31"/>
+                                <connections>
+                                    <action selector="numberOfPeopleSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="JK9-vB-3Py"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zc-YH-294">
+                                <rect key="frame" x="155.5" y="140" width="64" height="30"/>
+                                <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="calculateSplitAmount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l1d-Zn-nUx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfW-2Z-0Ik">
+                                <rect key="frame" x="37.5" y="190" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of People: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g04-pb-rv7" userLabel="Number Of People Label">
+                                <rect key="frame" x="109" y="231" width="157.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With Tip (15%): $0.00 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvU-9K-Aw3">
+                                <rect key="frame" x="102.5" y="272" width="170.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hvU-9K-Aw3" firstAttribute="top" secondItem="g04-pb-rv7" secondAttribute="bottom" constant="20" id="6oy-Qj-IgD"/>
+                            <constraint firstItem="mpU-XL-OD4" firstAttribute="width" secondItem="aWa-4C-z1V" secondAttribute="width" id="DfP-3P-EDd"/>
+                            <constraint firstItem="0zc-YH-294" firstAttribute="top" secondItem="mpU-XL-OD4" secondAttribute="bottom" constant="20" id="EKs-eM-1me"/>
+                            <constraint firstItem="BfW-2Z-0Ik" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H7Q-ty-WJy"/>
+                            <constraint firstItem="mpU-XL-OD4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hlt-WD-uZf"/>
+                            <constraint firstItem="mpU-XL-OD4" firstAttribute="top" secondItem="aWa-4C-z1V" secondAttribute="bottom" constant="20" id="I7v-Af-d5m"/>
+                            <constraint firstItem="g04-pb-rv7" firstAttribute="top" secondItem="BfW-2Z-0Ik" secondAttribute="bottom" constant="20" id="JBh-dg-0oI"/>
+                            <constraint firstItem="aWa-4C-z1V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="P7c-TI-XY5"/>
+                            <constraint firstItem="aWa-4C-z1V" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="RXX-qh-LP5"/>
+                            <constraint firstItem="BfW-2Z-0Ik" firstAttribute="width" secondItem="aWa-4C-z1V" secondAttribute="width" id="SXm-ee-iDH"/>
+                            <constraint firstItem="aWa-4C-z1V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vte-ck-Hlp"/>
+                            <constraint firstItem="hvU-9K-Aw3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bk2-2I-iLh"/>
+                            <constraint firstItem="0zc-YH-294" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eJZ-Dx-Sjt"/>
+                            <constraint firstItem="g04-pb-rv7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jWr-DO-Uof"/>
+                            <constraint firstItem="BfW-2Z-0Ik" firstAttribute="top" secondItem="0zc-YH-294" secondAttribute="bottom" constant="20" id="oQn-DF-Z4G"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="billAmountTextField" destination="aWa-4C-z1V" id="pL8-Bd-Ejl"/>
+                        <outlet property="numberOfPeopleLabel" destination="g04-pb-rv7" id="CHQ-0j-8UP"/>
+                        <outlet property="numberOfPeopleSlider" destination="mpU-XL-OD4" id="hfZ-BB-W06"/>
+                        <outlet property="splitAmountLabel" destination="BfW-2Z-0Ik" id="Awz-1o-hwZ"/>
+                        <outlet property="withTipLabel" destination="hvU-9K-Aw3" id="x8R-xm-XU1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="131.78410794602701"/>
         </scene>
     </scenes>
 </document>
